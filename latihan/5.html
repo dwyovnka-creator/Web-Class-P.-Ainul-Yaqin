@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Card Responsive</title>
+ <style>
+    body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: #eef2ff;
+    padding: 30px;
+    }
+    .grid-card {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 100px;
+    }
+    .card {
+    background-color: white;
+    padding: 24px;
+    border-radius: 18px;
+    box-shadow: 0 5px 14px rgba(0,0,0,0.12);
+    text-align: center;
+    border: 50px;
+    gap: 30px;
+    }
+    .card h2 { 
+        color: #373738;
+    }
+    .card h1 {
+        color: #373738;
+        border-radius: 20px;
+        width: 200px;
+        height: 60px;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        padding: 5px;
+        margin: auto;
+        font-size: 20px;
+        }
+    @media screen and (max-width: 768px) {
+    .grid-card { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media screen and (max-width: 480px) {
+    .grid-card { grid-template-columns: 1fr; }
+    }
+ </style>
+</head>
+<body>
+ <div class="grid-card">
+ <div class="card">
+    <h1 style="background-color: rgb(230, 176, 106);">Inline</h1>
+    <h2>Inline CSS</h2>
+    <p>CSS ditulis langsung pada tag HTML.</p>
+</div>
+ <div class="card">
+    <h1 style="background-color: rgb(124, 169, 180);">Internal</h1>
+    <h2>Internal CSS</h2>
+    <p>CSS ditulis di dalam tag style.</p>
+</div>
+ <div class="card">
+    <h1 style="background-color: rgb(182, 123, 143);">External</h1>
+    <h2>External CSS</h2>
+    <p>CSS ditulis dalam file terpisah.</p>
+</div>
+ </div>
+</body>
+</html>

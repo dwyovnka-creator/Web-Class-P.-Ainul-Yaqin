@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galeri 2 Kolom</title>
+
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body{
+      background: #ada5a5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 40px;
+    }
+
+    .container{
+      width: 850px;
+      background: #ada5a5;
+      border-radius: 20px;
+      padding: 30px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .galeri{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .card{
+      background: rgb(27, 27, 27);
+      border-radius: 18px;
+      padding: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+    .card img{
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 14px;
+    }
+
+    .card h3{
+      margin-top: 12px;
+      font-size: 20px;
+      color: #ffffff;
+      text-align: center;
+    }
+
+    @media(max-width: 700px){
+    .galeri{
+        grid-template-columns: 1fr;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="container">
+     <div class="galeri">
+
+      <div class="card">
+        <img src="1.png" alt="HTML">
+        <h3>HTML</h3>
+      </div>
+
+      <div class="card">
+        <img src="2.png" alt="CSS">
+        <h3>CSS</h3>
+      </div>
+
+      <div class="card">
+        <img src="3.png" alt="JavaScript">
+        <h3>JavaScript</h3>
+      </div>
+
+      <div class="card">
+        <img src="4.png" alt="Website">
+        <h3>Website</h3>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
