@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulir Data Pegawai</title>
+  <style>
+
+    body {
+      font-family: 'Comic Sans MS', cursive;
+      background-color: #e8ddb4;
+      color: #8a5f41;
+      padding: 30px 16px;
+    }
+
+    .container {
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    /* --- Kartu Header --- */
+    .header-card {
+      background: white;
+      border: 2px solid #a77f60;
+      border-radius: 15px;
+      text-align: center;
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+
+    .header-card h1 {
+      font-size: 28px;
+      color: #9a6200;
+      margin-bottom: 8px;
+    }
+
+    .header-card p {
+      font-size: 13px;
+      color: #4e3409;
+      line-height: 1.6;
+    }
+
+    /* --- Pesan Error dan Sukses --- */
+    .pesan {
+      padding: 11px 16px;
+      border-radius: 9px;
+      font-size: 14px;
+      margin-bottom: 16px;
+      display: none;
+    }
+
+    .pesan.error {
+      background: #fdecea;
+      border: 1px solid #f5b8b8;
+      color: #a52020;
+    }
+
+    .pesan.sukses {
+      background: #e9f7e9;
+      border: 1px solid #a3d4a3;
+      color: #2d6a2d;
+    }
+
+    /* --- Kartu Form --- */
+    .form-card {
+      background: #a0cfa0;
+      border: 1.5px solid #3d573a;
+      border-radius: 15px;
+      padding: 28px;
+      margin-bottom: 16px;
+    }
+
+    .form-card h2 {
+      font-size: 24px;
+      color: #352c0e;
+      text-align: center;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #ecd9a8;
+    }
+
+    /* Tabel label + input */
+    table { 
+      width: 100%; 
+    }
+    td { 
+      padding: 6px; 
+      vertical-align: middle; }
+
+    /* Kolom label */
+    td:first-child {
+      width: 150px;
+      font-weight: bold;
+      color: #352c0e;
+      white-space: nowrap;
+    }
+
+    /* Semua input seragam */
+    input, select, textarea {
+      width: 100%;
+      padding: 9px 12px;
+      border: 2px solid #d4b87a;
+      border-radius: 10px;
+      font-size: 14px;
+      font-family: 'Comic Sans MS', cursive;
+      color: #9a6200;
+      background: white;
+      outline: none;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: #c8860a;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 70px;
+    }
+
+    hr {
+      border: none;
+      border-top: 1.5px solid #ecd9a8;
+      margin: 18px 0;
+    }
+
+    /* Tombol */
+    button {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background: #9a6200;
+      color: white;
+      font-size: 15px;
+      font-weight: bold;
+      font-family: 'Comic Sans MS', cursive;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    button:hover { 
+      background: #c8860a; 
+    }
+
+    /* --- Kartu Hasil --- */
+    .result-card {
+      background: white;
+      border: 1.5px solid #d4b87a;
+      border-radius: 15px;
+      padding: 24px 28px;
+      display: none;
+    }
+
+    .result-card h2 {
+      font-size: 18px;
+      color: #9a6200;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1.5px solid #ecd9a8;
+    }
+
+    .result-table { 
+      width: 100%; 
+    }
+
+    .result-table tr {
+      border-bottom: 1px solid #ecdcb0;
+    }
+
+    .result-table tr:last-child {
+      border-bottom: none;
+    }
+
+    .result-table td:first-child {
+      width: 160px;
+      font-weight: bold;
+      color: #7a6040;
+      padding: 8px 10px 8px 0;
+    }
+
+    .result-table td:last-child {
+      color: #3d2b0e;
+      padding: 8px 0;
+    }
+
+    .badge {
+      background: #fdf0d5;
+      color: #9a6200;
+      border: 1px solid #dbb86e;
+      border-radius: 20px;
+      padding: 3px 14px;
+      font-weight: bold;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- HEADER -->
+    <div class="header-card">
+      <h1>Formulir Data Pegawai</h1>
+      <p>
+        Nama : Dewi Wuryan | NIM : 2421400173 <br>
+        Mata Kuliah : Web Pemrograman| UTS Semester III
+      </p>
+    </div>
+
+    <!-- PESAN -->
+    <div class="pesan error"  id="pesanError"></div>
+    <div class="pesan sukses" id="pesanSukses"></div>
+
+    <!-- FORM -->
+    <div class="form-card">
+      <h2>Data Pegawai</h2>
+
+      <table>
+        <tr>
+          <td>Nama Pegawai</td>
+          <td><input type="text" id="nama" placeholder="Masukkan Nama Lengkap"></td>
+        </tr>
+        <tr>
+          <td>Nomor Pegawai</td>
+          <td><input type="number" id="nomor" placeholder="Masukkan Nomor Pegawai"></td>
+        </tr>
+        <tr>
+          <td>Tanggal Masuk</td>
+          <td><input type="date" id="tanggal"></td>
+        </tr>
+        <tr>
+          <td>Email</td>
+          <td><input type="email" id="email" placeholder="contoh@gmail.com"></td>
+        </tr>
+        <tr>
+          <td>Alamat</td>
+          <td><textarea id="alamat" placeholder="Masukkan Alamat Lengkap"></textarea></td>
+        </tr>
+        <tr>
+          <td>Upload Foto</td>
+          <td><input type="file" id="foto" accept="image/*"></td>
+        </tr>
+        <tr>
+          <td>Jabatan</td>
+          <td>
+            <select id="jabatan">
+              <option value="">-- Pilih Jabatan --</option>
+              <option>Admin</option>
+              <option>Staff</option>
+              <option>Manager</option>
+              <option>Direktur</option>
+            </select>
+          </td>
+        </tr>
+      </table>
+
+      <hr>
+
+      <button onclick="tampilkanData()">Tampilkan Data Pegawai</button>
+    </div>
+
+    <!-- HASIL -->
+    <div class="result-card" id="hasilCard">
+      <h2>Hasil Data Pegawai</h2>
+      <table class="result-table">
+        <tr><td>Nama Pegawai</td>  <td id="h_nama"></td></tr>
+        <tr><td>Nomor Pegawai</td> <td id="h_nomor"></td></tr>
+        <tr><td>Tanggal Masuk</td> <td id="h_tanggal"></td></tr>
+        <tr><td>Email</td>         <td id="h_email"></td></tr>
+        <tr><td>Alamat</td>        <td id="h_alamat"></td></tr>
+        <tr><td>Upload Foto</td>   <td id="h_foto"></td></tr>
+        <tr>
+          <td>Jabatan</td>
+          <td><span class="badge" id="h_jabatan"></span></td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+
+  <script>
+
+    function tampilkanData() {
+
+      // Ambil nilai dari setiap input
+      let nama    = document.getElementById("nama").value.trim();
+      let nomor   = document.getElementById("nomor").value.trim();
+      let tanggal = document.getElementById("tanggal").value;
+      let email   = document.getElementById("email").value.trim();
+      let alamat  = document.getElementById("alamat").value.trim();
+      let jabatan = document.getElementById("jabatan").value;
+
+      // Ambil nama file foto (kosong jika tidak dipilih)
+      let fotoInput = document.getElementById("foto");
+      let foto = fotoInput.files.length > 0 ? fotoInput.files[0].name : "";
+
+      // Daftar semua field: [nilai, nama tampilan]
+      let semuaField = [
+        [nama,    "Nama Pegawai"],
+        [nomor,   "Nomor Pegawai"],
+        [tanggal, "Tanggal Masuk"],
+        [email,   "Email"],
+        [alamat,  "Alamat"],
+        [foto,    "Upload Foto"],
+        [jabatan, "Jabatan"]
+      ];
+
+      // Kumpulkan field yang masih kosong
+      let kosong = [];
+      for (let i = 0; i < semuaField.length; i++) {
+        if (semuaField[i][0] === "") {
+          kosong.push(semuaField[i][1]);
+        }
+      }
+
+      // Ambil elemen pesan
+      let elError  = document.getElementById("pesanError");
+      let elSukses = document.getElementById("pesanSukses");
+
+      // Sembunyikan pesan dulu
+      elError.style.display  = "none";
+      elSukses.style.display = "none";
+
+      // Jika ada yang kosong, tampilkan error dan stop
+      if (kosong.length > 0) {
+        elError.innerHTML = "Field wajib diisi: <strong>" + kosong.join(", ") + "</strong>";
+        elError.style.display = "block";
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
+
+      // Ubah format tanggal: YYYY-MM-DD → DD/MM/YYYY
+      let bagian = tanggal.split("-");
+      let tanggalRapi = bagian[2] + "/" + bagian[1] + "/" + bagian[0];
+
+      // Isi tabel hasil
+      document.getElementById("h_nama").textContent    = nama;
+      document.getElementById("h_nomor").textContent   = nomor;
+      document.getElementById("h_tanggal").textContent = tanggalRapi;
+      document.getElementById("h_email").textContent   = email;
+      document.getElementById("h_alamat").textContent  = alamat;
+      document.getElementById("h_foto").textContent    = foto;
+      document.getElementById("h_jabatan").textContent = jabatan;
+
+      // Tampilkan kartu hasil dan pesan sukses
+      document.getElementById("hasilCard").style.display = "block";
+      elSukses.innerHTML = "Data berhasil ditampilkan!";
+      elSukses.style.display = "block";
+
+      // Scroll ke kartu hasil
+      document.getElementById("hasilCard").scrollIntoView({ behavior: 'smooth' });
+    }
+
+  </script>
+
+</body>
+</html>
