@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Data Pegawai</title>
+</head>
+<style>
+    body {
+      font-family: 'Comic Sans MS', cursive;
+      background-color: #e8ddb4;
+      color: #8a5f41;
+      padding: 30px 16px;
+    }
+    .container{
+        max-width: 620px;
+        margin: auto;
+        }
+    .header-card {
+      background: white;
+      border: 2px solid #a77f60;
+      border-radius: 15px;
+      text-align: center;
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+
+    .header-card h1 {
+      font-size: 28px;
+      color: #9a6200;
+      margin-bottom: 8px;
+    }
+
+    .header-card p {
+      font-size: 13px;
+      color: #4e3409;
+      line-height: 1.6;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background: #9a6200;
+      color: white;
+      font-size: 15px;
+      font-weight: bold;
+      font-family: 'Comic Sans MS', cursive;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    button:hover { 
+      background: #c8860a; 
+    }
+
+    .container .form-card {
+      background: #a0cfa0;
+      border: 1.5px solid #3d573a;
+      border-radius: 15px;
+      padding: 28px;
+      margin-bottom: 16px;
+    }
+    .header-card{
+        text-align: center;
+        background-color: #ffffff;
+        border-radius: 30px;
+        padding: 1px;
+        margin-bottom: 20px;
+        color: #6d3e00;
+        border: 3px solid #b69014;
+    }
+
+    .result-card {
+      background: white;
+      border: 1.5px solid #d4b87a;
+      border-radius: 15px;
+      padding: 24px 28px;
+      display: none;
+    }
+
+    .result-card h2 {
+      font-size: 18px;
+      color: #9a6200;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1.5px solid #ecd9a8;
+    }
+
+    .result-table { 
+      width: 100%; 
+    }
+
+    .result-table tr {
+      border-bottom: 1px solid #ecdcb0;
+    }
+
+     .result-table tr:last-child {
+      border-bottom: none;
+    }
+
+    .result-table td:first-child {
+      width: 160px;
+      font-weight: bold;
+      color: #7a6040;
+      padding: 8px 10px 8px 0;
+    }
+
+    .result-table td:last-child {
+      color: #3d2b0e;
+      padding: 8px 0;
+    }
+
+    .badge {
+      background: #fdf0d5;
+      color: #9a6200;
+      border: 1px solid #dbb86e;
+      border-radius: 20px;
+      padding: 3px 14px;
+      font-weight: bold;
+    }
+
+    table{
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .form-card h2{
+        color: #6d3e00;
+        text-align: center;
+        margin-top: 0;
+    }
+    input, select {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1.5px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    }
+   
+    
+</style>
+<body>
+    
+    <div class="container">
+         <div class="header-card">
+      <h1>Formulir Data Pegawai</h1>
+      <p>
+        Nama : Dewi Wuryan | NIM : 2421400173 <br>
+        Mata Kuliah : Web Pemrograman| UTS Semester III
+      </p>
+    </div>
+        <div class="form-card">
+            <h2>Data Pegawai</h2>
+                    <table>
+                    <tr>
+                        <td>Nama Pegawai<input type="text" id="h_nama" placeholder="Masukkan Nama Lengkap"></td>
+                    </tr>
+                    <tr>
+                        <td>Nomor Pegawai<input type="number" id="h_nomor" placeholder="Masukkan Nomor Pegawai"></td>
+                    </tr>
+                    <tr>
+                    <td>Tanggal Masuk<input type="date" id="h_tanggal" placeholder="Masukkan Tanggal Masuk"></td>
+                    </tr>
+                    <tr>
+                    <td>Email<input type="email" id="h_email" placeholder="contoh@gmail.com"></td>
+                    </tr>
+                    <tr>
+                    <td>Alamat<input type="textarea" id="h_alamat" placeholder="Masukkan Alamat Lengkap"></td>
+                    </tr>
+                    <tr>
+                    <td>Upload Foto Pegawai<input type="file" id="h_foto" placeholder="Upload Foto Diri"></td>
+                    </tr>
+                    <tr>
+                        <td>Jabatan</td>
+                        <td>
+                        <select id="h_jabatan">
+                            <option value="">------Pilih Jabatan------</option>
+                            <option value="Admin">Admin</option>
+                            <option value="Staff">Staff</option>
+                            <option value="Manager">Manager</option>
+                            <option value="Direktur">Direktur</option>
+                        </select>
+                        </td>
+                    </tr>
+                </table>
+        </div>
+        
+        <tr>
+            <td colspan="7">
+                <button onclick="tampilkanData()">Tampilkan Data Pegawai</button>
+            </td>
+        </tr>
+        <div class="result-card" id="hasil">
+            <h2>Hasil akan muncul disini</h2>
+            <table class="result-card">
+            <tr><td>Nama Pegawai</td>  <td id="hasil_nama"></td></tr>
+            <tr><td>Nomor Pegawai</td> <td id="hasil_nomor"></td></tr>
+            <tr><td>Tanggal Masuk</td> <td id="hasil_tanggal"></td></tr>
+            <tr><td>Email</td>         <td id="hasil_email"></td></tr>
+            <tr><td>Alamat</td>        <td id="hasil_alamat"></td></tr>
+            <tr><td>Upload Foto</td>   <td id="hasil_foto"></td></tr>
+        
+            <tr>
+                <td>Jabatan</td>
+                <td><span class="badge" id="hasil_jabatan"></span></td>
+            </tr>
+      </table>
+        </div>
+    </div>
+    <script>
+        function tampilkanData(){
+            let nama = document.getElementById("h_nama").value;
+            let nomor = document.getElementById("h_nomor").value;
+            let tanggal = document.getElementById("h_tanggal").value;
+            let jabatan = document.getElementById("h_jabatan").value;
+            let email = document.getElementById("h_email").value;
+            let alamat = document.getElementById("h_alamat").value;
+            let fotoInput = document.getElementById("h_foto");
+      let foto = "";
+          if (fotoInput.files.length > 0) {
+              foto = fotoInput.files[0].name;
+            } 
+          else {
+              foto = "";
+            }
+
+                let hasil = [
+                [nama,    "h_nama"],
+                [nomor,   "h_nomor"],
+                [tanggal, "h_tanggal"],
+                [jabatan, "h_jabatan"],
+                [email,   "h_email"],
+                [alamat,  "h_alamat"],
+                [foto,    "h_foto"]
+            ];
+        let bagian = tanggal.split("-");
+        let tanggalRapi = bagian[2] + "/" + bagian[1] + "/" + bagian[0];
+
+        // Isi tabel hasil
+        document.getElementById("h_nama").textContent    = nama;
+        document.getElementById("h_nomor").textContent   = nomor;
+        document.getElementById("h_tanggal").textContent = tanggalRapi;
+        document.getElementById("h_email").textContent   = email;
+        document.getElementById("h_alamat").textContent  = alamat;
+        document.getElementById("h_foto").textContent    = foto;
+        document.getElementById("h_jabatan").textContent = jabatan;
+
+        // Tampilkan kartu hasil dan pesan sukses
+        let elError  = document.getElementById("pesanError");
+        let elSukses = document.getElementById("pesanSukses");
+
+        document.getElementById("hasil").style.display = "block";
+        elSukses.innerHTML = "Data berhasil ditampilkan!";
+        elSukses.style.display = "block";
+
+        // Scroll ke kartu hasil
+        document.getElementById("hasil").scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        
+    </script>
+    
+</body>
+</html>
